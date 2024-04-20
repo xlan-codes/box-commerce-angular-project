@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
@@ -8,6 +9,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
     RouterOutlet,
     RouterLink, 
     RouterLinkActive,
+    
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

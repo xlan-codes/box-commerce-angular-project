@@ -13,6 +13,7 @@ import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { AuthInterceptor } from '../../../http-interceptor/auth.interceptor';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 interface Food {
@@ -40,7 +41,8 @@ interface Food {
     MatCheckboxModule, 
     MatDatepickerModule, 
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   templateUrl: './currency.component.html',
   styleUrl: './currency.component.scss'

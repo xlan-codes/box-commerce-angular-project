@@ -47,6 +47,17 @@ export const CURRENCIES = [
     {id: 'ZAR', name: 'South African Rand'}
     ];
 
+    export function migrationFactory() {
+        // The animal table was added with version 2 but none of the existing tables or data needed
+        // to be modified so a migrator for that version is not included.
+        return {
+          1: (db: any, transaction: { objectStore: (arg0: string) => any; }) => {
+            const store = transaction.objectStore('units');
+            store.createIndex('unit', 'unit', { unique: true });
+          }
+        };
+      }
+
    export let DBConfig  = {
         name: 'MyDb',
         version: 1,
@@ -56,5 +67,6 @@ export const CURRENCIES = [
           storeSchema: [
             { name: 'unit', keypath: 'unit', options: { unique: true } },
           ]
-        }]
+        }],
+        migrationFactory
       };

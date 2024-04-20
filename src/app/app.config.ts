@@ -18,7 +18,6 @@ export const appConfig: ApplicationConfig = {
   //     useClass: AuthInterceptor,
   // },
   importProvidersFrom(
-    NgxIndexedDBModule.forRoot(DBConfig)
   ),
     provideHttpClient(withInterceptors([httpInterceptorFn])),
     provideClientHydration(), 

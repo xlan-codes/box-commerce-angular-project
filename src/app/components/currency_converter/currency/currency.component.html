@@ -1,69 +1,66 @@
-<br />
-
 <section>
 
-    <form [formGroup]="form">
+    <div fxLayout="column" fxLayoutAlign="space-between center">
+        <form [formGroup]="form">
+            <div fxLayout="row" fxLayoutAlign="center">
+                <mat-form-field class="example-form-field" xFlex="20" fxFlex.xs="55">
+                    <mat-label>Amount</mat-label>
+                    <input matInput type="number" formControlName="value">
+                </mat-form-field>
 
-    <mat-form-field class="example-form-field">
-        <mat-label>Amount</mat-label>
-        <input matInput type="number" formControlName="value">
-    </mat-form-field>
+                <mat-form-field xFlex="20" fxFlex.xs="55">
+                    <mat-label>From</mat-label>
+                    <mat-select formControlName="from">
+                        @for (currency of currencies; track currency) {
+                        <mat-option [value]="currency.id">{{currency.id}} - {{currency.name}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>From</mat-label>
-        <mat-select formControlName="from">
-            @for (currency of currencies; track currency) {
-            <mat-option [value]="currency.id">{{currency.id}} - {{currency.name}}</mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
+                <div class="switch-button" xFlex="20" fxFlex.xs="55">
+                    <button mat-fab aria-label="Switch currencies" (click)="switchCurrencies()">
+                        <mat-icon>cached</mat-icon>
+                    </button>
+                </div>
 
-    <div class="switch-button">
-        <button mat-fab aria-label="Switch currencies" (click)="switchCurrencies()">
-            <mat-icon>cached</mat-icon>
-        </button>
+                <mat-form-field xFlex="20" fxFlex.xs="55">
+                    <mat-label>To</mat-label>
+                    <mat-select formControlName="to">
+                        @for (currency of currencies; track currency) {
+                        <mat-option [value]="currency.id">{{currency.id}} - {{currency.name}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+
+                @if (showHistory) {
+                <mat-form-field xFlex="20" fxFlex.xs="55">
+                    <mat-label>Choose previews dates</mat-label>
+                    <input matInput [(ngModel)]="historyDate" [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                }
+
+
+                <div class="switch-button" xFlex="20" fxFlex.xs="55">
+                    <button mat-flat-button color="primary" aria-label="Convert" (click)="convert()">
+                        Convert
+                    </button>
+                </div>
+            </div>
+        </form>
+        <mat-checkbox class="example-margin" [checked]="showHistory" (change)="showHistory = !showHistory">
+            History value
+        </mat-checkbox>
     </div>
 
-    <mat-form-field>
-        <mat-label>To</mat-label>
-        <mat-select formControlName="to">
-            @for (currency of currencies; track currency) {
-            <mat-option [value]="currency.id">{{currency.id}} - {{currency.name}}</mat-option>
-            }
-        </mat-select>
-    </mat-form-field>
-
-
-    @if (showHistory) {
-        <mat-form-field>
-            <mat-label>Choose previews dates</mat-label>
-            <input matInput [(ngModel)] = "historyDate" [matDatepicker]="picker">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-    }
-
-
-    <div class="switch-button">
-        <button mat-flat-button color="primary" aria-label="Convert" (click)="convert()">
-            Convert
-        </button>
-    </div>
-</form>
 </section>
-<section>
-    <mat-checkbox class="example-margin"
-    [checked]="showHistory"
-    (change)="showHistory = !showHistory"
-    >
-    History value
-</mat-checkbox>
-</section>
-<br />
-<section>
+
+<section fxLayout="column" fxLayoutAlign="space-between center">
     @if (converted) {
-    <div class="result-currency">
+    <div class="result-currency" fxLayout="column" fxLayoutAlign="space-between center">
         <div class="result-from">
             {{resultFrom}}
         </div>

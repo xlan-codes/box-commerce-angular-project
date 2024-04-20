@@ -7,23 +7,27 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import { LengthService } from '../../../services/length/length.service';
 import { Unit } from "convert";
+import { AddUnitComponent } from "../add-unit/add-unit.component";
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
 @Component({
-  selector: 'app-length',
-  standalone: true,
-  imports: [
-    MatFormFieldModule, 
-    MatSelectModule, MatInputModule, 
-    FormsModule, MatIconModule, MatButtonModule,
-    ReactiveFormsModule
-  ],
-  providers: [
-    LengthService
-  ],
-  templateUrl: './length.component.html',
-  styleUrl: './length.component.scss'
+    selector: 'app-length',
+    standalone: true,
+    providers: [
+        LengthService
+    ],
+    templateUrl: './length.component.html',
+    styleUrl: './length.component.scss',
+    imports: [
+        MatFormFieldModule,
+        MatSelectModule, MatInputModule,
+        FormsModule, MatIconModule, MatButtonModule,
+        ReactiveFormsModule,
+        AddUnitComponent,
+        FlexLayoutModule
+    ]
 })
 export class LengthComponent {
   units: String[] = [];
@@ -40,7 +44,7 @@ export class LengthComponent {
   constructor(
     private lengthService: LengthService
   ) {
-    // lengthService.initDb();
+    lengthService.initDb();
     this.lengthService.getUnits().then((units) => {
       // console.log()
       this.units = units.map((e) => e.unit);
