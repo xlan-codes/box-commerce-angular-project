@@ -1,0 +1,35 @@
+
+
+section , * {
+    display: inline;
+}
+
+mat-form-field{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.switch-button {
+    max-width: 100px;
+}
+
+.result-currency{
+    margin-block: 20px;
+    width: 100%;
+  
+  
+    .result-from{
+      font-weight: 800;
+      color: #3a3636;
+    }
+    .result-to{
+      font-size: 2rem;
+      font-weight: 1000;
+      margin-top: 5px;
+      margin-bottom:15px;
+    }
+    .result-info{
+      white-space: pre;
+      font-weight: 500;
+    }
+  }
